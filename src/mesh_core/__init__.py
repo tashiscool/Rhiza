@@ -55,13 +55,21 @@ from .context_learner import (
 
 # Mesh Integration Bridge - Connects Sentient modules with Mesh systems
 from .sentient_mesh_bridge import (
-    SentientMeshBridge, PalmSlabConfig, MeshValidationResult, create_palm_slab_node
+    SentientMeshBridge, PalmSlabConfig, MeshValidationResult, create_palm_slab_node as create_sentient_bridge
 )
 
 # Complete Palm Slab Interface - True palm slab node implementation
 from .palm_slab_interface import (
-    PalmSlabInterface, PalmSlabUser, PalmSlabInteraction, PrivacyRing, create_palm_slab_node as create_complete_palm_slab
+    PalmSlabInterface, PalmSlabUser, PalmSlabInteraction, PrivacyRing
 )
+
+# Import the specific palm slab creation function directly
+from .palm_slab_interface import create_palm_slab_node as _create_palm_slab_impl
+
+# Create alias for complete palm slab
+def create_complete_palm_slab(node_id: str, privacy_level: str = "selective") -> PalmSlabInterface:
+    """Create a complete palm slab node with all Mesh capabilities"""
+    return _create_palm_slab_impl(node_id=node_id, privacy_level=privacy_level)
 
 # Governance systems
 from .governance import (
@@ -140,7 +148,7 @@ __all__ = [
     'LearningPatternType', 'LearningQuality', 'AdaptationType', 'LearningResult', 'create_context_learner',
     
     # Mesh Integration Bridge
-    'SentientMeshBridge', 'PalmSlabConfig', 'MeshValidationResult', 'create_palm_slab_node',
+    'SentientMeshBridge', 'PalmSlabConfig', 'MeshValidationResult', 'create_sentient_bridge',
     
     # Complete Palm Slab Interface
     'PalmSlabInterface', 'PalmSlabUser', 'PalmSlabInteraction', 'PrivacyRing', 'create_complete_palm_slab',

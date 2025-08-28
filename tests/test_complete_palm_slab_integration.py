@@ -101,11 +101,12 @@ class CompletePalmSlabTest:
         self.logger.info("-" * 60)
         
         try:
-            # Create palm slab node with different privacy levels
-            self.palm_slab = create_complete_palm_slab(
-                node_id="test_palm_slab_001",
-                privacy_level="selective"
-            )
+            # Create palm slab node with configuration
+            config = {
+                "node_id": "test_palm_slab_001",
+                "privacy_level": "selective"
+            }
+            self.palm_slab = create_complete_palm_slab(config=config)
             
             # Initialize the palm slab
             await self.palm_slab.initialize()
@@ -447,10 +448,11 @@ class CompletePalmSlabTest:
                 self.logger.info(f"   Testing {privacy_level} privacy level...")
                 
                 # Create palm slab with specific privacy level
-                test_slab = create_complete_palm_slab(
-                    node_id=f"test_privacy_{privacy_level}",
-                    privacy_level=privacy_level
-                )
+                config = {
+                    "node_id": f"test_privacy_{privacy_level}",
+                    "privacy_level": privacy_level
+                }
+                test_slab = create_complete_palm_slab(config=config)
                 
                 await test_slab.initialize()
                 
