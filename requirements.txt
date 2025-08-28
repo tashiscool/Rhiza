@@ -1,0 +1,32 @@
+# Core dependencies
+aiohttp>=3.8.0
+aiosqlite>=0.17.0
+asyncio>=3.4.4
+cryptography>=3.4.8
+numpy>=1.21.0
+pydantic>=1.8.0
+fastapi>=0.68.0
+
+# Network discovery
+zeroconf>=0.39.0
+aiodns>=3.0.0
+
+# Database
+asyncpg>=0.25.0
+
+# Web scraping (for some integrations)
+beautifulsoup4>=4.9.0
+
+# ML/AI (optional)
+sentence-transformers>=2.0.0
+torch>=1.9.0
+
+# Development dependencies
+pytest>=6.2.0
+pytest-asyncio>=0.15.0
+black>=21.0.0
+flake8>=3.9.0
+
+# Optional integration dependencies (install as needed)
+# leon-core>=1.0.0        # For Leon integration
+# axiom-engine>=1.0.0     # For AxiomEngine integration

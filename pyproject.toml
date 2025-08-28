@@ -1,0 +1,77 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools-scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "the-mesh"
+version = "5.0.0"
+description = "A decentralized, self-correcting knowledge and consensus network"
+authors = [{name = "The Mesh Development Team"}]
+license = {text = "Apache-2.0"}
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["ai", "mesh-network", "distributed-systems", "consensus", "palm-slab"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "aiohttp>=3.8.0",
+    "aiosqlite>=0.17.0", 
+    "cryptography>=3.4.8",
+    "numpy>=1.21.0",
+    "pydantic>=1.8.0",
+    "fastapi>=0.68.0",
+    "zeroconf>=0.39.0",
+]
+
+[project.optional-dependencies]
+leon = ["leon-core>=1.0.0"]
+axiom = ["axiom-engine>=1.0.0"] 
+sentient = ["sentence-transformers>=2.0.0", "torch>=1.9.0"]
+empathy = ["focused-empathy>=1.0.0"]
+privacy = ["intent-aware-privacy-protection>=1.0.0"]
+dev = ["pytest>=6.2.0", "pytest-asyncio>=0.15.0", "black>=21.0.0", "flake8>=3.9.0"]
+all = ["the-mesh[leon,axiom,sentient,empathy,privacy,dev]"]
+
+[project.urls]
+Homepage = "https://github.com/the-mesh-project/the-mesh"
+Documentation = "https://the-mesh.readthedocs.io/"
+Repository = "https://github.com/the-mesh-project/the-mesh"
+"Bug Tracker" = "https://github.com/the-mesh-project/the-mesh/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+asyncio_mode = "auto"
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''

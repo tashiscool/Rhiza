@@ -1,0 +1,294 @@
+{
+  "axiom_config": {
+    "api_nodes": ["http://127.0.0.1:8001", "http://127.0.0.1:8002"],
+    "direct_db": true,
+    "fallback_to_api": true,
+    "min_confidence": 0.65,
+    "min_status": "corroborated",
+    "max_facts": 10,
+    "query_timeout": 30,
+    "cache_ttl": 300,
+    "retry_attempts": 3
+  },
+  "intent_config": {
+    "java_classpath": "/Users/admin/AI/intent_aware_privacy_protection_in_pws/source_code",
+    "main_class": "edu.virginia.cs.main.IntentClassifier",
+    "confidence_threshold": 0.7,
+    "manipulation_threshold": 0.8,
+    "intent_cache_size": 1000,
+    "baseline_update_frequency": 3600
+  },
+  "empathy_config": {
+    "model_path": "/Users/admin/AI/focused-empathy/models",
+    "device": "auto",
+    "batch_size": 8,
+    "max_length": 512,
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "cache_models": true
+  },
+  "kobold_config": {
+    "api_url": "http://127.0.0.1:5001",
+    "api_key": null,
+    "model_name": "intent-classification-7b-q4_k_m",
+    "max_tokens": 2048,
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "top_k": 40,
+    "repeat_penalty": 1.1,
+    "context_length": 2048
+  },
+  "palm_slab_config": {
+    "biometric_enabled": true,
+    "intention_verification": true,
+    "coercion_detection": true,
+    "local_storage": true,
+    "encryption_key": null
+  },
+  "personal_config": {
+    "character_system": "victoria_steel",
+    "personalization_level": 0.7,
+    "learning_enabled": true,
+    "privacy_level": "high",
+    "character_traits": {
+      "intellectual": 0.9,
+      "empathetic": 0.7,
+      "assertive": 0.8,
+      "analytical": 0.9,
+      "supportive": 0.8
+    }
+  },
+  "slab_config": {
+    "biometric_required": true,
+    "intention_required": true,
+    "coercion_detection": true,
+    "storage_path": "/tmp/mesh_biometrics",
+    "palm_match_threshold": 0.85,
+    "intention_match_threshold": 0.75,
+    "coercion_sensitivity": 0.7
+  },
+  "mesh_orchestrator": {
+    "enable_voice_interface": true,
+    "enable_biometric_auth": true,
+    "enable_social_repair": true,
+    "enable_intent_monitoring": true,
+    "enable_empathy_engine": true,
+    "enable_personal_agent": true,
+    "enable_truth_verification": true,
+    "enable_trust_scoring": true,
+    "enable_network_sync": true,
+    "enable_provenance_tracking": true,
+    "enable_immunity_system": true
+  },
+  "m4_config": {
+    "memory_limit_gb": 48,
+    "neural_engine": true,
+    "metal_acceleration": true,
+    "core_ml": true,
+    "concurrent_models": 5,
+    "cache_strategy": "adaptive"
+  },
+  "m4_resource_manager": {
+    "total_memory_gb": 48.0,
+    "reserved_memory_gb": 4.0,
+    "max_concurrent_models": 5,
+    "use_neural_engine": true,
+    "use_metal_compute": true,
+    "dynamic_scaling": true,
+    "kobold_pool_size": 4,
+    "model_allocations": {
+      "truth_processing": {
+        "memory_gb": 8.0,
+        "priority": 9,
+        "concurrent_sessions": 3
+      },
+      "intent_classification": {
+        "memory_gb": 6.0,
+        "priority": 8,
+        "concurrent_sessions": 4
+      },
+      "empathy_generation": {
+        "memory_gb": 8.0,
+        "priority": 7,
+        "concurrent_sessions": 2
+      },
+      "personal_assistant": {
+        "memory_gb": 12.0,
+        "priority": 6,
+        "concurrent_sessions": 2
+      },
+      "content_generation": {
+        "memory_gb": 10.0,
+        "priority": 5,
+        "concurrent_sessions": 1
+      }
+    }
+  },
+  "kobold_config": {
+    "api_url": "http://127.0.0.1:5001",
+    "api_key": null,
+    "model_name": "intent-classification-7b-q4_k_m",
+    "max_tokens": 2048,
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "top_k": 40,
+    "repeat_penalty": 1.1,
+    "context_length": 2048
+  },
+  "kobold_client": {
+    "model_dir": "/Users/admin/AI/models",
+    "max_concurrent_requests": 10,
+    "health_check_interval": 60,
+    "auto_restart": true,
+    "models": [
+      {
+        "name": "intent_classifier",
+        "model_type": "intent_classification",
+        "path": "/Users/admin/AI/models/intent-classification-7b-q4_k_m.gguf",
+        "context_length": 2048,
+        "threads": 6,
+        "memory_gb": 6,
+        "port": 5001,
+        "gpu_layers": 0,
+        "rope_freq_base": 10000.0,
+        "rope_freq_scale": 1.0
+      },
+      {
+        "name": "empathy_generator",
+        "model_type": "empathy_generation", 
+        "path": "/Users/admin/AI/models/empathy-generation-7b-q4_k_m.gguf",
+        "context_length": 4096,
+        "threads": 8,
+        "memory_gb": 8,
+        "port": 5002,
+        "gpu_layers": 0,
+        "rope_freq_base": 10000.0,
+        "rope_freq_scale": 1.0
+      },
+      {
+        "name": "personal_assistant",
+        "model_type": "personal_assistant",
+        "path": "/Users/admin/AI/models/victoria-steel-13b-q4_k_m.gguf",
+        "context_length": 8192,
+        "threads": 8,
+        "memory_gb": 12,
+        "port": 5003,
+        "gpu_layers": 0,
+        "rope_freq_base": 10000.0,
+        "rope_freq_scale": 1.0
+      }
+    ]
+  },
+  "demo_system": {
+    "enable_comprehensive_demo": true,
+    "enable_performance_testing": true,
+    "save_detailed_reports": true,
+    "log_level": "INFO",
+    "demo_scenarios": [
+      {
+        "name": "Truth Without Gatekeepers",
+        "enabled": true,
+        "simulate_biometrics": true
+      },
+      {
+        "name": "Intent Manipulation Detection", 
+        "enabled": true,
+        "simulate_biometrics": true
+      },
+      {
+        "name": "Social Repair in Action",
+        "enabled": true,
+        "simulate_biometrics": true
+      },
+      {
+        "name": "Personal AI Assistant",
+        "enabled": true,
+        "simulate_biometrics": true
+      },
+      {
+        "name": "Zero-Lag Local Processing",
+        "enabled": true,
+        "simulate_biometrics": true
+      },
+      {
+        "name": "Coercion Detection",
+        "enabled": true,
+        "simulate_biometrics": true,
+        "simulate_coercion": true
+      }
+    ]
+  },
+  "logging_level": "INFO",
+  "data_dir": "/Users/admin/AI/mesh_data",
+  "temp_dir": "/tmp/mesh_temp",
+  "logging": {
+    "level": "INFO",
+    "log_file": "/tmp/mesh_system.log",
+    "max_file_size_mb": 100,
+    "backup_count": 5,
+    "console_output": true,
+    "component_levels": {
+      "mesh_core": "INFO",
+      "axiom_server": "WARNING", 
+      "kobold_client": "INFO",
+      "empathy_engine": "INFO",
+      "intent_monitor": "INFO",
+      "resource_manager": "INFO"
+    }
+  },
+  "mesh_immunity": {
+    "isolation_enabled": true,
+    "quarantine_duration_hours": 24,
+    "isolation_duration_hours": 72,
+    "max_isolated_nodes": 10,
+    "trust_divergence_threshold": 0.3,
+    "behavioral_anomaly_threshold": 2.0,
+    "consensus_manipulation_threshold": 0.4,
+    "trust_drop_threshold": 0.2,
+    "trust_inflation_threshold": 0.3,
+    "pattern_anomaly_threshold": 2.5,
+    "attack_detection_enabled": true,
+    "min_confidence_threshold": 0.7,
+    "pattern_matching_enabled": true
+  },
+  "mesh_provenance": {
+    "retention_days": 365,
+    "max_records_per_info": 1000,
+    "anonymity_enabled": true,
+    "verification_required": true,
+    "context_tracking": true,
+    "flow_tracking": true,
+    "confidence_evolution": true,
+    "audit_trail_enabled": true
+  },
+  "mesh_immunity": {
+    "isolation_enabled": true,
+    "quarantine_duration_hours": 24,
+    "isolation_duration_hours": 72,
+    "max_isolated_nodes": 10,
+    "trust_divergence_threshold": 0.3,
+    "behavioral_anomaly_threshold": 2.0,
+    "consensus_manipulation_threshold": 0.4,
+    "trust_drop_threshold": 0.2,
+    "trust_inflation_threshold": 0.3,
+    "pattern_anomaly_threshold": 2.5,
+    "attack_detection_enabled": true,
+    "min_confidence_threshold": 0.7,
+    "pattern_matching_enabled": true
+  },
+  "system_info": {
+    "version": "0.1.0",
+    "platform": "darwin-arm64",
+    "hardware": "Apple M4 Pro",
+    "memory_gb": 48,
+    "neural_engine_cores": 18,
+    "cpu_cores": 12,
+    "gpu_cores": 20,
+    "optimizations": [
+      "apple_silicon",
+      "neural_engine",
+      "metal_compute",
+      "unified_memory"
+    ]
+  }
+}
