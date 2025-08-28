@@ -63,6 +63,11 @@ from .palm_slab_interface import (
     PalmSlabInterface, PalmSlabUser, PalmSlabInteraction, PrivacyRing
 )
 
+# Simple Palm Slab for testing
+from .palm_slab_simple import (
+    SimplePalmSlabInterface, create_simple_palm_slab
+)
+
 # Import the specific palm slab creation function directly
 from .palm_slab_interface import create_palm_slab_node as _create_palm_slab_impl
 

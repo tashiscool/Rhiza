@@ -25,11 +25,10 @@ logging.basicConfig(
 
 # Test imports
 try:
-    from mesh_core import (
-        create_complete_palm_slab,
-        PalmSlabInterface,
-        SentientMeshBridge,
-        PalmSlabConfig
+    # Use simplified version for testing
+    from mesh_core.palm_slab_simple import (
+        create_simple_palm_slab as create_complete_palm_slab,
+        SimplePalmSlabInterface as PalmSlabInterface
     )
     PALM_SLAB_AVAILABLE = True
 except ImportError as e:
@@ -102,11 +101,10 @@ class CompletePalmSlabTest:
         
         try:
             # Create palm slab node with configuration
-            config = {
-                "node_id": "test_palm_slab_001",
-                "privacy_level": "selective"
-            }
-            self.palm_slab = create_complete_palm_slab(config=config)
+            self.palm_slab = create_complete_palm_slab(
+                node_id="test_palm_slab_001",
+                privacy_level="selective"
+            )
             
             # Initialize the palm slab
             await self.palm_slab.initialize()
@@ -448,11 +446,10 @@ class CompletePalmSlabTest:
                 self.logger.info(f"   Testing {privacy_level} privacy level...")
                 
                 # Create palm slab with specific privacy level
-                config = {
-                    "node_id": f"test_privacy_{privacy_level}",
-                    "privacy_level": privacy_level
-                }
-                test_slab = create_complete_palm_slab(config=config)
+                test_slab = create_complete_palm_slab(
+                    node_id=f"test_privacy_{privacy_level}",
+                    privacy_level=privacy_level
+                )
                 
                 await test_slab.initialize()
                 

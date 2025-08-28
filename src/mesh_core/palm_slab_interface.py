@@ -15,7 +15,8 @@ from typing import Dict, Any, List, Optional, Union
 from dataclasses import dataclass
 import time
 
-from mesh_core.sentient_mesh_bridge import SentientMeshBridge, PalmSlabConfig, MeshValidationResult
+from mesh_core.sentient_mesh_bridge import SentientMeshBridge, MeshValidationResult
+from mesh_core.sentient_mesh_bridge import PalmSlabConfig as SentientPalmSlabConfig
 
 @dataclass
 class PalmSlabUser:
@@ -59,7 +60,7 @@ class PalmSlabInterface:
         self.logger = logging.getLogger(__name__)
         
         # Initialize mesh bridge
-        self.bridge_config = PalmSlabConfig(
+        self.bridge_config = SentientPalmSlabConfig(
             node_id=node_id,
             privacy_level=privacy_level,
             enable_mesh_validation=True,
